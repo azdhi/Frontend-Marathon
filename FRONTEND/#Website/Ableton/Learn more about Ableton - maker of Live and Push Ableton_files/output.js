@@ -1,0 +1,17 @@
+(function(global,document,console){'use strict';const services={'crazy_egg':{'cookies':['_ceir','_ceg.s','_ceg.u','cer.s','cer.v'],'gtm_id':'ceg',},'google_analytics':{'cookies':['_ga','_gat','_gid','_gat_UA-4276731-7'],'gtm_id':'google',},'scarab':{'cookies':['scarab.visitor'],},};Object.values(services).map(service=>{service.enabled=undefined;service.callbacks=[];});const settings={cookie_name:'cookie_settings',domain:'.ableton.com',banner_url:'https://www.ableton.com/en/cookie-banner/',secure:true,max_age:31536000,};const biscuits={'requires_consent':undefined,};function cookieRegExp(cookieName){return new RegExp('(^|;) ?'+cookieName+'=([^;]*)(;|$)');}
+function hasBannerCookie(){return cookieRegExp('cookie_banner').test(document.cookie);}
+function setBannerCookie(){document.cookie='cookie_banner=true;max-age=3600;path=/;domain='+settings.domain;}
+function purgeCookieSettings(){document.cookie=settings.cookie_name+'=;max-age=0;path=/;domain='+settings.domain;}
+function storeCookieSettings(){const o={};for(const identifier in services){o[identifier]=services[identifier].enabled;}
+const v=escape(JSON.stringify(o));let cookie=settings.cookie_name+'='+v+';max-age='+settings.max_age+';path=/;domain='+settings.domain;if(settings.secure){cookie+=';secure;samesite=none';}
+document.cookie=cookie;}
+function fetchCookieSettings(){const m=cookieRegExp(settings.cookie_name).exec(document.cookie);if(m){try{return JSON.parse(unescape(m[2]));}catch{purgeCookieSettings();}}}
+function parseCookieSettings(cookieSettings){const newServices=[];for(const[identifier,service]of Object.entries(services)){if(cookieSettings.hasOwnProperty(identifier)){service.enabled=Boolean(cookieSettings[identifier]);}else{newServices.push(identifier);}}
+return newServices;}
+function createOverlay(data){document.body.insertAdjacentHTML('beforeend',data);const overlay=document.getElementById('biscuits-overlay');overlay.querySelector('#biscuits-close-button').addEventListener('click',function(){setBannerCookie();removeOverlay();});overlay.querySelector('#biscuits-accept-button').addEventListener('click',function(){for(const identifier in services){services[identifier].enabled=true;}
+storeCookieSettings();removeOverlay();for(const identifier in services){for(const callback of services[identifier].callbacks){callback();}}});}
+function renderOverlay(){fetch(settings.banner_url+'?next='+window.location.href).then(function(response){return response.text()}).then(function(data){const f=createOverlay.bind(undefined,data);if(document.body){f();}else{document.addEventListener('DOMContentLoaded',f,{once:true});}});}
+function removeOverlay(){document.getElementById('biscuits-overlay').remove();}
+biscuits.configure=function(override){Object.assign(settings,override);const cookieSettings=fetchCookieSettings();if(cookieSettings){const newServices=parseCookieSettings(cookieSettings);biscuits.requires_consent=Boolean(newServices.length);}else{biscuits.requires_consent=!hasBannerCookie();}
+if(biscuits.requires_consent){renderOverlay();}};biscuits.when=function(identifier,callback){const service=services[identifier];if(service){if(service.enabled){callback.apply(service);}else{service.callbacks.push(callback);}}else{console.warn(identifier);}};biscuits.enabled_gtm_ids=function(){const result=[];for(const service of Object.values(services)){if(service.enabled&&service.gtm_id){result.push(service.gtm_id);}}
+return result;};global['biscuits']=biscuits;})(window,document,console);;

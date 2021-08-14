@@ -1,0 +1,73 @@
+@import url('http://fonts.cdnfonts.com/css/graphik');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Graphik',sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #000;
+}
+/*Notification bar */
+
+.notification-bar {
+    display: flex; 
+    padding: 20px 28px;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.notification_bar-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    padding-left: 25px;
+    background-color: #3545ee;
+    
+    
+}
+
+.notification
+
+/*blog-wrapper*/
+
+.blog-wrapper {
+    position: relative;
+    display: flex;
+}
+
+/*blog-side-nav*/
+
+.blog-side__nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    overflow: auto;
+    width: 25vw;
+    height: 100vh;
+    padding: 48px 2.5vw 35px;
+    flex-direction: column;
+}
+
+.sidenav-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-nav_top {
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-nav_lockup {
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 45px;
+    align-items: center;
+
+}

@@ -1,0 +1,246 @@
+@import url('http://fonts.cdnfonts.com/css/graphik');
+/*@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');*/
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css);
+
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+
+body {
+    font-family: 'Graphik',sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: normal;
+    background: #f6f9fa;
+    color: #000;  
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    color: #000;
+}
+
+/*Wrapper*/
+
+.wrapper {
+position: relative;
+}
+
+.nav-wrapper {
+    display: flex;
+    min-width: 100vw;
+    max-height: 30vh;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    box-shadow: rgb(38, 57, 77) 0px 15px 20px -10px;
+}
+
+.nav-logo {
+    flex-grow: 1;
+    padding: 10px;
+    margin-left: 25px;
+}
+
+.nav-logo img {
+    height: 100px;
+    width: 150px;
+}
+
+.nav__link-list {
+    margin-right: 5vw;
+}
+
+.nav__link-list a {
+    padding: 2rem;
+    border-bottom: 1px sol transparent;    
+}
+
+.nav__link-list a:hover {
+    padding: 2rem;
+    box-shadow: inset 0 3px #EE0F0F; 
+}
+
+/*Content*/
+
+.content {
+    min-width: 100vw;
+    flex-direction: column;  
+}
+
+.content-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    border-bottom: 2px solid #eee;
+    text-transform:uppercase ;
+    flex-direction: column;
+}
+
+.item-1 h2 {
+  font-size: 3rem;
+}
+
+.item-1  p {
+  font-size: 1.25rem;
+}
+
+/*tab-container*/
+
+.tab_container {
+    width: 90vw;
+    height: 80vh;
+    margin: 0 auto;
+    padding-top: 10px;
+    position: relative;
+}
+
+input, section {
+    clear: both;
+    padding-top: 10px;
+    display: none;
+}
+
+section {
+    height: 60vh;
+}
+
+label {
+    font-weight: 700;
+    font-size: 18px;
+    display: block;
+    float: left;
+    width: 20%;
+    padding: 1.5em;
+    color: #757575;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    background: #f0f0f0;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4,
+#tab5:checked ~ #content5 {
+  display: block;
+  padding: 20px;
+  background: #fff;
+  color: #999;
+  border-bottom: 2px solid #f0f0f0;
+
+}
+
+.tab_container .tab-content p,
+.tab_container .tab-content h3 {
+  -webkit-animation: fadeInScale 0.7s ease-in-out;
+  -moz-animation: fadeInScale 0.7s ease-in-out;
+  animation: fadeInScale 0.7s ease-in-out;
+}
+.tab_container .tab-content h3  {
+  text-align: center;
+}
+
+.tab_container [id^="tab"]:checked + label {
+    background: #fff;
+    box-shadow: inset 0 3px #90030D;
+  }
+  
+  .tab_container [id^="tab"]:checked + label .fa {
+    color: #EE0F0F;
+  }
+  
+  label .fa {
+    font-size: 1.3em;
+    margin: 0 0.4em 0 0;
+  }
+
+  .tab-content_container {
+    display: flex;
+  
+  }
+  
+
+  .tab-content_container img {
+    border-radius: 15px;
+    width: 500px;
+    height: 350px;
+    object-fit:cover;
+  }
+
+  .tab-content_container p {
+    padding: 20px;
+  }
+  /*Media query*/
+@media only screen and (max-width: 900px) {
+    label span {
+      display: none;
+    }
+    
+    .tab_container {
+      width: 98%;
+    }
+  }
+  
+  /*Content Animation*/
+  @keyframes fadeInScale {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+  }
+  
+  .no_wrap {
+    text-align:center;
+    color: #0ce;
+  }
+  .link {
+    text-align:center;
+  }
+
+
+/*Footer*/
+
+.sikil {
+    max-width: 100vw;
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-25p {
+    max-width: 30vw;
+    max-height: 100%;
+    border: solid 1px #eee;
+    flex-grow: 1;
+    text-align: center;
+    border-left: solid 1px;
+}

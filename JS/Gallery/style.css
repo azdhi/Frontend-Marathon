@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to right top,
+            #0F2027, #203A43, #2C5364);
+}
+.navigation {
+    display: flex;
+    align-items: center;
+}
+.navigation .logotext {
+    flex-grow: 1;
+    color: #FFF;
+    font-size:xx-large;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-left: 3rem;
+    margin-top: 3rem;
+}
+.navigation 
